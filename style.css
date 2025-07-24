@@ -509,6 +509,16 @@ footer {
   max-height: 300px;
 }
 
+button[disabled], .btn[disabled], #submitBtn[disabled] {
+  background: #bfc7cc !important;
+  color: #fff !important;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  border: none;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
 /* Utility */
 ::-webkit-input-placeholder { color: #7b8a99; }
 ::-moz-placeholder { color: #7b8a99; }
