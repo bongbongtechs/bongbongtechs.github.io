@@ -128,10 +128,13 @@
       <br/>
       <br/>
       <div id="customContactForm" style="max-width:370px;margin:0 auto;">
+        <label for="name">이름:</label><br>
         <input type="text" id="name" name="name" placeholder="이름" required style="width:100%;margin-bottom:0.7em;"><br>
+        <label for="email">이메일:</label><br>
         <input type="email" id="email" name="email" placeholder="이메일" required style="width:100%;margin-bottom:0.7em;"><br>
+        <label for="message">문의내용:</label><br>
         <textarea id="message" name="message" placeholder="문의내용" required style="width:100%;margin-bottom:1em;"></textarea><br>
-        <button id="customSubmitBtn" type="button" style="width:100%;padding:0.8em 0;font-weight:700;background:var(--primary);color:#fff;border:none;border-radius:var(--radius);font-size:1.05rem;">전송</button>
+        <button id="customSubmitBtn" type="button" style="width:100%;padding:0.8em 0;font-weight:700;background:#1683c7;color:#fff;border:none;border-radius:8px;font-size:1.05rem;">전송</button>
       </div>
       <div id="formResult"></div>
       <div class="faq-accordion">
@@ -161,27 +164,37 @@
     </div>
     <div style="margin-top:8px; color:#7b8a99; font-size:0.9em;">&copy; 2025 봉봉 테크놀로지. All rights reserved.</div>
   </footer>
+
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxi9s-es2ZkqzP495F_pvGTTnCu_KQSaZUINrG8GOqZVD-9lxeIohC_GoM5q1dR3-JoPA/exechttps://script.google.com/macros/s/AKfycbyRMDsBIo3Lfr8qu0p0B0PD5ugFKdgsWQfDwbiAcqzj1lyCw9wNwT58vpltAVa8zqWmfg/exec';
+    // Google Apps Script 웹앱 URL로 교체하세요!
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-8BCx7YYCi8EU0xnRbl5PVpbfgwI4i5YfGvILcFKdxP1TAAAAinXxPykx9pgajz0O/exec';
+
     document.getElementById('customSubmitBtn').addEventListener('click', async function() {
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
       const result = document.getElementById('formResult');
       result.textContent = '';
+
       if (!name || !email || !message) {
         result.textContent = '모든 항목을 입력해 주세요.';
         result.style.color = '#d32f2f';
         return;
       }
+
       result.textContent = '전송 중...';
       result.style.color = '#1683c7';
+
       try {
         const response = await fetch(SCRIPT_URL, {
           method: 'POST',
-          body: new URLSearchParams({ name, email, message })
+          headers: {
+            'Content-Type': 'application/json' // JSON으로 전송
+          },
+          body: JSON.stringify({ name, email, message })
         });
-        if (response.ok) {
+        const data = await response.json();
+        if (data.status === 'success') {
           result.textContent = '제출 완료했습니다. 감사합니다.';
           result.style.color = '#1683c7';
           document.getElementById('name').value = '';
