@@ -126,7 +126,7 @@
       </div>
       <br/>
       <br/>
-      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyAeT84Aik4GI9gO9_YisPVktwIjrQ0cy6UKRi12D_eAwQ4W3ZMIyk5AbZs7up1KEijVA/exec" target="_blank">
+      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyAeT84Aik4GI9gO9_YisPVktwIjrQ0cy6UKRi12D_eAwQ4W3ZMIyk5AbZs7up1KEijVA/exec" onsubmit="return showDialog(event)">
         <input type="text" name="name" placeholder="이름" required>
         <input type="email" name="email" placeholder="이메일" required>
         <textarea name="message" placeholder="문의내용" required></textarea>
@@ -149,6 +149,33 @@
         </div>
       </div>
     </div>
+
+  <!-- 제출 완료 다이얼로그 -->
+  <div id="submitDialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display:none;">
+    <div class="modal-content">
+      <h2 id="modalTitle">제출이 완료되었습니다.</h2>
+      <p>3영업일 이내에 회신하겠습니다.<br>감사합니다.</p>
+      <button class="modal-close" onclick="closeDialog()">닫기</button>
+    </div>
+  </div>
+  <script>
+    function showDialog(e) {
+      e.preventDefault();
+      var form = e.target;
+      document.getElementById('submitDialog').style.display = 'flex';
+      var data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data })
+        .catch(function() {});
+      return false;
+    }
+    function closeDialog() {
+      document.getElementById('submitDialog').style.display = 'none';
+    }
+    // ESC로 닫기
+    window.addEventListener('keydown', function(e) {
+      if(e.key === 'Escape') closeDialog();
+    });
+  </script>
 
   <!-- Footer (Dark) -->
   <footer>
