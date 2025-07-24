@@ -127,11 +127,11 @@
       </div>
       <br/>
       <br/>
-      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbx9Tg3ZSAF8OOgkkGdjh-VKPmrq9clB7YTARX1lfGc0qahTwDZnl4qKFDuUkQ0PRUXnxQ/exec" onsubmit="return handleSubmit(event)">
+      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbx9Tg3ZSAF8OOgkkGdjh-VKPmrq9clB7YTARX1lfGc0qahTwDZnl4qKFDuUkQ0PRUXnxQ/exec" onsubmit="return handleSubmit(event)" oninput="submitBtn.disabled = !this.checkValidity()">
         <input type="text" name="name" placeholder="이름" required>
         <input type="email" name="email" placeholder="이메일" required>
         <textarea name="message" placeholder="문의내용" required></textarea>
-        <button type="submit">전송</button>
+        <button id="submitBtn" type="submit" disabled>전송</button>
       </form>
       <div id="formResult"></div>
       <div class="faq-accordion">
