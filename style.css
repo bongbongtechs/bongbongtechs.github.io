@@ -65,7 +65,7 @@ a:hover {
   padding: 0.5rem 0;
 }
 .site-logo {
-  height: 38px;
+  height: 60px;
   width: auto;
   margin-right: 1rem;
 }
@@ -460,7 +460,7 @@ footer {
     min-height: 70px;
   }
   .site-logo {
-    height: 48px;
+    height: 60px;
   }
   nav {
     display: flex !important;
