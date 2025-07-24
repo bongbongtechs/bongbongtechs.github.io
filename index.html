@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT 컨설팅·소프트웨어 개발사 랜딩페이지</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1683c7;
+      --primary-dark: #10639a;
+      --bg-dark: #181a1b;
+      --bg-darker: #101112;
+      --bg-light: #fff;
+      --card-dark: #232527;
+      --card-light: #f7f9fa;
+      --white: #fff;
+      --gray: #bfc7cc;
+      --gray-dark: #7b8a99;
+      --gray-light: #4b5563;
+      --border-dark: #23272b;
+      --border-light: #e5e7eb;
+      --radius: 12px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.18);
+      --gradient-main: linear-gradient(120deg, #1683c7 0%, #10639a 100%);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', 'Apple SD Gothic Neo', Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--white);
+      line-height: 1.6;
+      min-width: 1200px;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0 0 0.5em 0; font-weight: 700; }
+    section { padding: 64px 0; }
+    .container {
+      width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    /* Header & Navigation */
+    .site-header {
+      background: var(--bg-darker);
+      border-bottom: 1.5px solid var(--border-dark);
+      padding: 32px 0 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 1100px;
+      margin: 0 auto;
+    }
+    .site-logo {
+      height: 80px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 16px #1683c7cc);
+    }
+    .site-header nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+    }
+    .site-header nav a {
+      color: var(--gray);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.18rem;
+      transition: color 0.2s;
+      position: relative;
+      padding: 6px 0;
+      letter-spacing: 0.01em;
+    }
+    .site-header nav a::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: width 0.3s;
+      margin-top: 2px;
+    }
+    .site-header nav a:hover {
+      color: var(--primary);
+    }
+    .site-header nav a:hover::after {
+      width: 100%;
+    }
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      background: var(--gradient-main);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      margin-right: 16px;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 16px rgba(22,131,199,0.18);
+      letter-spacing: 0.01em;
+    }
+    .btn.secondary {
+      background: var(--bg-light);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      box-shadow: none;
+    }
+    .btn:hover {
+      background: linear-gradient(120deg, #10639a 0%, #1683c7 100%);
+      box-shadow: 0 4px 24px #1683c744;
+    }
+    .btn.secondary:hover {
+      background: var(--primary);
+      color: var(--white);
+      border: 2px solid var(--primary-dark);
+    }
+    /* Hero (Dark) */
+    .hero {
+      background: linear-gradient(120deg, #23272b 0%, #181a1b 100%);
+      text-align: center;
+      padding: 120px 0 100px 0;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 20%, #1683c7 0%, transparent 60%),
+                  radial-gradient(circle at 20% 80%, #23272b 0%, transparent 70%);
+      opacity: 0.18;
+      z-index: 0;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-title {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 0.5em;
+      text-shadow: 0 2px 16px #1683c744;
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      color: var(--gray);
+      margin-bottom: 2em;
+      text-shadow: 0 1px 8px #1683c744;
+    }
+    /* Why Us (Dark) */
+    .whyus-section {
+      background: var(--bg-dark);
+    }
+    .whyus {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: nowrap;
+    }
+    .whyus-item {
+      flex: 1 1 200px;
+      background: var(--card-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      text-align: center;
+      min-width: 220px;
+      margin-bottom: 16px;
+      border-top: 5px solid var(--primary);
+      transition: box-shadow 0.2s, transform 0.2s;
+      max-width: 250px;
+    }
+    .whyus-item:hover {
+      box-shadow: 0 8px 32px #1683c744;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .whyus-icon {
+      font-size: 2.7rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .whyus-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      color: var(--primary);
+    }
+    .whyus-desc {
+      color: var(--gray-dark);
+      font-size: 1rem;
+    }
+    /* What We Do (Light) */
+    .services-section {
+      background: var(--bg-light);
+    }
+    .services {
+      display: flex;
+      gap: 32px;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+    .service {
+      flex: 1 1 250px;
+      background: var(--card-light);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(22,131,199,0.07);
+      padding: 32px 24px;
+      min-width: 220px;
+      margin-bottom: 16px;
+      border-left: 5px solid var(--primary);
+      transition: box-shadow 0.2s, transform 0.2s;
+      max-width: 320px;
+    }
+    .service:hover {
+      box-shadow: 0 8px 32px #1683c744;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .service-title {
+      font-size: 1.18rem;
+      margin-bottom: 0.5em;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+    .service-desc {
+      color: var(--gray-light);
+    }
+    /* Process (Dark) */
+    .process-section {
+      background: var(--bg-dark);
+    }
+    .process-steps {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .process-step {
+      flex: 1 1 160px;
+      background: var(--card-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 16px;
+      text-align: center;
+      min-width: 140px;
+      position: relative;
+      border-bottom: 5px solid var(--primary);
+      transition: box-shadow 0.2s, transform 0.2s;
+      max-width: 200px;
+    }
+    .process-step:hover {
+      box-shadow: 0 8px 32px #1683c744;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .process-step-number {
+      display: inline-block;
+      background: var(--gradient-main);
+      color: var(--white);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.13rem;
+      box-shadow: 0 2px 8px #1683c744;
+    }
+    .process-step-title {
+      font-weight: 700;
+      margin-bottom: 0.3em;
+      color: var(--primary);
+    }
+    /* Portfolio (Light) */
+    .portfolio-section {
+      background: var(--bg-light);
+    }
+    .portfolio-list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 32px;
+      margin-top: 32px;
+    }
+    .portfolio-item {
+      flex: 1 1 300px;
+      background: var(--card-light);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(22,131,199,0.07);
+      padding: 24px 20px;
+      min-width: 260px;
+      margin-bottom: 16px;
+      border-right: 5px solid var(--primary);
+      transition: box-shadow 0.2s, transform 0.2s;
+      max-width: 340px;
+    }
+    .portfolio-item:hover {
+      box-shadow: 0 8px 32px #1683c744;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .portfolio-title {
+      font-weight: 700;
+      margin-bottom: 0.3em;
+      color: var(--primary);
+    }
+    .portfolio-desc {
+      color: var(--gray-light);
+      font-size: 0.98rem;
+    }
+    /* Testimonials (Dark) */
+    .testimonials-section {
+      background: var(--bg-dark);
+    }
+    .testimonials {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 32px;
+      margin-top: 32px;
+      justify-content: space-between;
+    }
+    .testimonial {
+      flex: 1 1 300px;
+      background: var(--card-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      min-width: 220px;
+      margin-bottom: 16px;
+      font-style: italic;
+      position: relative;
+      border-left: 5px solid var(--primary);
+      transition: box-shadow 0.2s, transform 0.2s;
+      max-width: 340px;
+      color: var(--white);
+    }
+    .testimonial:hover {
+      box-shadow: 0 8px 32px #1683c744;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .testimonial::before {
+      content: '“';
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: absolute;
+      left: 16px;
+      top: 8px;
+    }
+    .testimonial-author {
+      margin-top: 1em;
+      font-weight: 700;
+      color: var(--primary);
+      font-style: normal;
+    }
+    /* Contact Form (Light) */
+    .contact-section {
+      background: var(--bg-light);
+    }
+    .contact-form {
+      background: var(--card-light);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(22,131,199,0.07);
+      padding: 40px 32px;
+      max-width: 500px;
+      margin: 0 auto;
+      border-top: 5px solid var(--primary);
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid var(--primary);
+      border-radius: var(--radius);
+      margin-bottom: 18px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+      background: #fff;
+      color: var(--gray-light);
+      transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border: 1.5px solid var(--primary-dark);
+      outline: none;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--gradient-main);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 16px #1683c744;
+    }
+    .contact-form button:hover { background: linear-gradient(120deg, #10639a 0%, #1683c7 100%); }
+    /* Footer (Dark) */
+    footer {
+      background: var(--bg-darker);
+      color: var(--gray);
+      padding: 32px 0 16px 0;
+      text-align: center;
+      font-size: 0.98rem;
+      border-top: 1.5px solid var(--border-dark);
+    }
+    .footer-info {
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--primary);
+      margin: 0 8px;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Logo -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <img src="logo.png" alt="BBT 로고" class="site-logo">
+      <nav>
+        <a href="#whyus">강점</a>
+        <a href="#services">서비스</a>
+        <a href="#portfolio">포트폴리오</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section (Dark) -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">고객의 성공을 내 일처럼 고민합니다<br>IT 컨설팅 & 소프트웨어 개발, 완벽한 파트너</h1>
+      <div class="hero-sub">정기적인 소통, 기한 엄수, 고객 맞춤형 개발로<br>여러분의 비즈니스 혁신을 지원합니다.</div>
+      <a href="#contact" class="btn">무료 컨설팅 신청하기</a>
+      <a href="#portfolio" class="btn secondary">포트폴리오 보기</a>
+    </div>
+  </section>
+
+  <!-- Why Us Section (Dark) -->
+  <section class="whyus-section" id="whyus">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">왜 저희와 함께해야 할까요?</h2>
+      <div class="whyus">
+        <div class="whyus-item">
+          <div class="whyus-icon">💡</div>
+          <div class="whyus-title">고객 맞춤형 개발</div>
+          <div class="whyus-desc">고객의 제품을 내 제품처럼 고민하는 진정성</div>
+        </div>
+        <div class="whyus-item">
+          <div class="whyus-icon">🔄</div>
+          <div class="whyus-title">정기적인 소통</div>
+          <div class="whyus-desc">매주/격주 소통으로 프로젝트 방향성을 꼼꼼히 맞춥니다</div>
+        </div>
+        <div class="whyus-item">
+          <div class="whyus-icon">⏰</div>
+          <div class="whyus-title">기한 100% 준수</div>
+          <div class="whyus-desc">약속한 일정, 반드시 지킵니다</div>
+        </div>
+        <div class="whyus-item">
+          <div class="whyus-icon">👨‍💻</div>
+          <div class="whyus-title">전문 개발팀</div>
+          <div class="whyus-desc">다양한 산업의 00+ 프로젝트 경험, 검증된 개발자들</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do Section (Light) -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">무엇을 제공하나요?</h2>
+      <div class="services">
+        <div class="service">
+          <div class="service-title">IT 컨설팅</div>
+          <div class="service-desc">사업 초기 기획·시스템 아키텍처·기술 검토를 책임집니다.</div>
+        </div>
+        <div class="service">
+          <div class="service-title">소프트웨어 외주 개발</div>
+          <div class="service-desc">웹/모바일/솔루션 개발 전체 과정을 맞춤형으로 제공합니다.</div>
+        </div>
+        <div class="service">
+          <div class="service-title">프로젝트 관리 & 유지보수</div>
+          <div class="service-desc">개발 후에도 지속적인 업데이트와 기술 지원 약속</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section (Dark) -->
+  <section class="process-section">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">작업 프로세스</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-number">1</div>
+          <div class="process-step-title">상담 및 요구사항 정리</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-number">2</div>
+          <div class="process-step-title">기획 및 제안서 제공</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-number">3</div>
+          <div class="process-step-title">개발 및 주기적 피드백/소통</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-number">4</div>
+          <div class="process-step-title">테스트 & 납품</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-number">5</div>
+          <div class="process-step-title">유지보수 및 사후관리</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section (Light) -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">주요 포트폴리오</h2>
+      <div class="portfolio-list">
+        <div class="portfolio-item">
+          <div class="portfolio-title">OO 물류회사 ERP 시스템 개발 (2023)</div>
+          <div class="portfolio-desc">대형 물류기업의 업무 효율화를 위한 맞춤형 ERP 시스템 구축</div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-title">금융 앱 고도화 및 UX 개선 (2024)</div>
+          <div class="portfolio-desc">금융권 모바일 앱의 사용자 경험 및 보안성 강화 프로젝트</div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-title">헬스케어 플랫폼 개발</div>
+          <div class="portfolio-desc">환자-의료진 간 실시간 소통 및 데이터 관리 솔루션</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section (Dark) -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">고객 후기</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          프로젝트 관리 및 일정 준수에 감동했습니다.<br>
+          <span class="testimonial-author">- A사 담당자</span>
+        </div>
+        <div class="testimonial">
+          소통이 원활하고, 요구사항을 꼼꼼히 반영해주셔서 만족합니다.<br>
+          <span class="testimonial-author">- B사 대표</span>
+        </div>
+        <div class="testimonial">
+          개발 이후에도 지속적으로 관리해주셔서 신뢰가 갑니다.<br>
+          <span class="testimonial-author">- C사 IT팀</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/CTA Section (Light) -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:2em; color:var(--primary);">궁금한 점을 남겨주세요</h2>
+      <form class="contact-form" autocomplete="off">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+        <label for="message">문의 내용</label>
+        <textarea id="message" name="message" rows="5" placeholder="문의 내용을 입력하세요" required></textarea>
+        <button type="submit" disabled>상담 신청 (데모용, 전송 불가)</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer (Dark) -->
+  <footer>
+    <div class="footer-info">
+      (주) IT컨설팅·소프트웨어 | 서울특별시 강남구 테헤란로 123 | 사업자등록번호: 123-45-67890<br>
+      이메일: info@itconsulting.co.kr | 대표전화: 02-1234-5678
+    </div>
+    <div class="footer-links">
+      <a href="#">회사소개</a>|
+      <a href="#">개인정보처리방침</a>|
+      <a href="#">이용약관</a>
+    </div>
+    <div style="margin-top:8px; color:#7b8a99; font-size:0.9em;">&copy; 2024 IT컨설팅·소프트웨어. All rights reserved.</div>
+  </footer>
+</body>
+</html> 
