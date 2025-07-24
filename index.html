@@ -677,24 +677,14 @@
 
   <!-- Contact/CTA Section (Light) -->
   <section class="section-dark contact-section" id="contact">
-    <div class="container contact-center">
-      <h2 class="section-title">문의 안내</h2>
-      <div class="contact-info" style="font-size:1.3rem; color:var(--gray); margin-bottom:2.5em; margin-top:2em; letter-spacing:0.01em; text-align:center;">
-        <span style="font-weight:700; color:var(--primary);">이메일로 문의주시면 친절히 답변하겠습니다.</span>
-      </div>
-      <a href="mailto:bongbongtech@gmail.com" class="contact-email-rock">
-        <span class="mail-icon">&#9993;</span>
-        <span class="mail-text">bongbongtech@gmail.com</span>
-      </a>
-    </div>
+    <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyAeT84Aik4GI9gO9_YisPVktwIjrQ0cy6UKRi12D_eAwQ4W3ZMIyk5AbZs7up1KEijVA/exec">
+      <input type="text" name="name" placeholder="이름" required>
+      <input type="email" name="email" placeholder="이메일" required>
+      <textarea name="message" placeholder="문의내용" required></textarea>
+      <button type="submit">전송</button>
+    </form>
   </section> 
 
-  <form id="gform" method="POST" action="https://script.google.com/macros/s/https://bongbongtech.com/exec">
-    <input type="text" name="name" placeholder="이름" required>
-    <input type="email" name="email" placeholder="이메일" required>
-    <textarea name="message" placeholder="문의내용" required></textarea>
-    <button type="submit">전송</button>
-  </form>
   
 
   <!-- Footer (Dark) -->
