@@ -569,3 +569,12 @@ footer {
   background: #10639a;
   box-shadow: 0 4px 24px #1683c744;
 }
+
+#formResult {
+  color: #1683c7;
+  font-weight: 900;
+  font-size: 1.13rem;
+  text-align: center;
+  margin-top: 1.5em;
+  letter-spacing: 0.01em;
+}

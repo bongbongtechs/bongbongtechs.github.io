@@ -6,6 +6,7 @@
   <title>봉봉 테크놀로지</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
  
 </head>
 <body>
@@ -126,12 +127,13 @@
       </div>
       <br/>
       <br/>
-      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyAeT84Aik4GI9gO9_YisPVktwIjrQ0cy6UKRi12D_eAwQ4W3ZMIyk5AbZs7up1KEijVA/exec" onsubmit="return showDialog(event)">
+      <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyAeT84Aik4GI9gO9_YisPVktwIjrQ0cy6UKRi12D_eAwQ4W3ZMIyk5AbZs7up1KEijVA/exec" onsubmit="return handleSubmit(event)">
         <input type="text" name="name" placeholder="이름" required>
         <input type="email" name="email" placeholder="이메일" required>
         <textarea name="message" placeholder="문의내용" required></textarea>
         <button type="submit">전송</button>
       </form>
+      <div id="formResult"></div>
       <div class="faq-accordion">
         <input type="checkbox" id="faq-toggle" class="faq-toggle">
         <label for="faq-toggle" class="faq-label">
@@ -150,33 +152,6 @@
       </div>
     </div>
 
-  <!-- 제출 완료 다이얼로그 -->
-  <div id="submitDialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display:none;">
-    <div class="modal-content">
-      <h2 id="modalTitle">제출이 완료되었습니다.</h2>
-      <p>3영업일 이내에 회신하겠습니다.<br>감사합니다.</p>
-      <button class="modal-close" onclick="closeDialog()">닫기</button>
-    </div>
-  </div>
-  <script>
-    function showDialog(e) {
-      e.preventDefault();
-      var form = e.target;
-      document.getElementById('submitDialog').style.display = 'flex';
-      var data = new FormData(form);
-      fetch(form.action, { method: 'POST', body: data })
-        .catch(function() {});
-      return false;
-    }
-    function closeDialog() {
-      document.getElementById('submitDialog').style.display = 'none';
-    }
-    // ESC로 닫기
-    window.addEventListener('keydown', function(e) {
-      if(e.key === 'Escape') closeDialog();
-    });
-  </script>
-
   <!-- Footer (Dark) -->
   <footer>
     <div class="footer-info">
@@ -186,5 +161,23 @@
     </div>
     <div style="margin-top:8px; color:#7b8a99; font-size:0.9em;">&copy; 2025 봉봉 테크놀로지. All rights reserved.</div>
   </footer>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      var form = e.target;
+      var result = document.getElementById('formResult');
+      result.textContent = '';
+      var data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data })
+        .then(function() {
+          form.reset();
+          result.textContent = '제출 완료했습니다. 감사합니다.';
+        })
+        .catch(function() {
+          result.textContent = '전송에 실패했습니다. 다시 시도해 주세요. 문제가 계속된다면, 아래 이메일로 직접 문의를 부탁드립니다.';
+        });
+      return false;
+    }
+  </script>
 </body>
 </html> 
