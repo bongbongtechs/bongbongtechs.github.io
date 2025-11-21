@@ -41,7 +41,7 @@
       "email": "bongbongtech@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "경기도 의정부시 신흥로 234, 11층 스마트오피스(의정부동, CRC빌딩)"
+        "streetAddress": "서울특별시 중랑구 신내역로 111, 신내 SK V1 센터 A동 616호"
       }
     }
     </script>
@@ -73,7 +73,9 @@
       <h1 class="hero-title">고객의 일을 내 일처럼</h1>
       <h1 class="hero-title">IT 컨설팅 & 소프트웨어 개발 및 유지보수</h1>
       <div class="hero-sub">정기적인 소통, 기한 엄수, <br/>고객 맞춤형 개발로 여러분의 비즈니스를 지원합니다.</div>
-      <a href="#contact" class="btn">문의하기</a>
+      <a href="#contact" class="btn">봉봉테크 문의</a>
+      <hr style="margin: 20px;"/>
+      <a href="#contact" class="btn" style="background-color: blueviolet;">베리던 고객 문의</a>
     </div>
   </section>
 
@@ -170,13 +172,13 @@
       <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbx9Tg3ZSAF8OOgkkGdjh-VKPmrq9clB7YTARX1lfGc0qahTwDZnl4qKFDuUkQ0PRUXnxQ/exec" onsubmit="return handleSubmit(event)" oninput="submitBtn.disabled = !this.checkValidity()">
         <input type="text" name="name" placeholder="이름" required>
         <input type="email" name="email" placeholder="이메일" required>
-        <textarea name="message" 
-        placeholder="[1] 아이템/서비스 소개
-[2] 주요 기능/요구사항
-[3] 참고하시는 서비스(문서, 레퍼런스, 링크 등)
-[4] 원하는 산출물(모바일 어플, 웹 사이트 등등)
-[5] 요구하는 일정
-        " required></textarea>
+        <textarea name="message" placeholder= "문의내용" required></textarea>
+        <!-- " [1] 아이템/서비스 소개
+        [2] 주요 기능/요구사항
+        [3] 참고하시는 서비스(문서, 레퍼런스, 링크 등)
+        [4] 원하는 산출물(모바일 어플, 웹 사이트 등등)
+        [5] 요구하는 일정 " -->
+         
         <button id="submitBtn" type="submit" disabled>전송</button>
       </form>
       <div id="formResult"></div>
